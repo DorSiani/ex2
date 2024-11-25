@@ -1,12 +1,19 @@
 /******************
-Name:
-ID:
+Name: Dor Siani
+ID: 332019967
 Assignment: ex2
 *******************/
 
 #include <stdio.h>
 
 int main() {
+	int scnum;
+	
+	while True{
+		printf("Choose an option:\n\t1. Happy Face\n\t2. Balanced Number\n\t3. Generous Number\n\t4. Circle Of Joy\n\t5. Happy Numbers\n\t6. Festival Of Laughter\n\t7. Exit");
+		Break;
+	}
+	
 	// Case 1: Draw Happy Face with given symbols for eyes, nose and mouse
 	/* Example:
 	* n = 3:
