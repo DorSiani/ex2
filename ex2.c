@@ -147,52 +147,135 @@ int main() {
 			}
 			case 6: {
 				int input_ok = 0;
-					char text_smile[100], text_cheer[100];
-					int smile, cheer, max;
-					printf("Enter a smile and cheer number:\n");
+				char text_smile[100], text_cheer[100];
+				int smile, cheer, max;
+				printf("Enter a smile and cheer number:\n");
 				do {
-					scanf(" %[^:]: %d,%[^:]: %d", text_smile, &smile, text_cheer, &cheer);
-					int start_smile=0;
-					for (int i=0; i<100; i++) {
+					// Read first word
+					int result = scanf("%s", text_smile);
+					if (result != 1) {
+						scanf("%*[^\n]");
+						scanf("%*c");
+						printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+						continue;
+					}
+
+					// Check if first word is "smile"
+					int start_smile = 0;
+					for (int i = 0; i < 100; i++) {
 						if (text_smile[i] != ' ') {
 							start_smile = i;
 							break;
 						}
 					}
-					int is_smile_text_ok = 0;
+					
+					int is_smile_ok = 0;
 					if (text_smile[start_smile] == 's' 
 						&& text_smile[start_smile+1] == 'm'
 						&& text_smile[start_smile+2] == 'i'
 						&& text_smile[start_smile+3] == 'l'
 						&& text_smile[start_smile+4] == 'e'
 					){
-						is_smile_text_ok = 1;
+						is_smile_ok = 1;
 					}
 
-					int start_cheer=0;
-					for (int i=0; i<100; i++) {
+					if (!is_smile_ok) {
+						scanf("%*[^\n]");
+						scanf("%*c");
+						printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+						continue;
+					}
+
+					// Read colon
+					char colon;
+			        result = scanf("%c", &colon);
+					if (result != 1) {
+						scanf("%*[^\n]");
+						scanf("%*c");
+						printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+						continue;
+					}
+
+					// Read first number
+					result = scanf(" %d", &smile);
+					if (result != 1 || smile <= 0) {
+						scanf("%*[^\n]");
+						scanf("%*c");
+						printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+						continue;
+					}
+
+					// Read comma
+					char comma;
+					result = scanf(" %c", &comma);
+					if (result != 1 || comma != ',') {
+						scanf("%*[^\n]");
+						scanf("%*c");
+						printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+						continue;
+					}
+
+					// Read "cheer"
+					result = scanf(" %s", text_cheer);
+					if (result != 1) {
+						scanf("%*[^\n]");
+						scanf("%*c");
+						printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+						continue;
+					}
+
+					// Check if second word is "cheer"
+					int start_cheer = 0;
+					for (int i = 0; i < 100; i++) {
 						if (text_cheer[i] != ' ') {
 							start_cheer = i;
 							break;
 						}
 					}
-					int is_cheer_text_ok = 0;
+					
+					int is_cheer_ok = 0;
 					if (text_cheer[start_cheer] == 'c' 
 						&& text_cheer[start_cheer+1] == 'h'
 						&& text_cheer[start_cheer+2] == 'e'
 						&& text_cheer[start_cheer+3] == 'e'
 						&& text_cheer[start_cheer+4] == 'r'
 					){
-						is_cheer_text_ok = 1;
+						is_cheer_ok = 1;
 					}
 
-
-					if (is_smile_text_ok&& is_cheer_text_ok && (smile > 0)&&(cheer > 0)){
-						input_ok = 1;
-					} else {
+					if (!is_cheer_ok) {
+						scanf("%*[^\n]");
+						scanf("%*c");
 						printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+						continue;
 					}
-				}while (!input_ok);
+
+					// Read colon
+					result = scanf("%c", &colon);
+					if (result != 1) {
+						scanf("%*[^\n]");
+						scanf("%*c");
+						printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+						continue;
+					}
+
+					// Read second number
+					result = scanf(" %d", &cheer);
+					if (result != 1 || cheer <= 0 || cheer == smile) {
+						scanf("%*[^\n]");
+						scanf("%*c");
+						printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+						continue;
+					}
+
+					// If we got here, everything is valid
+					input_ok = 1;
+
+					// Clear any remaining characters in the line
+					scanf("%*[^\n]");
+					scanf("%*c");
+
+				} while (!input_ok);
 
 				input_ok = 0;
 				printf("Enter maximum number for the festival:\n");
