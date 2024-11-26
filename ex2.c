@@ -151,7 +151,6 @@ int main() {
 				int smile, cheer, max;
 				printf("Enter a smile and cheer number:\n");
 				do {
-					// Read first word
 					int result = scanf("%s", text_smile);
 					if (result != 1) {
 						scanf("%*[^\n]");
@@ -160,7 +159,6 @@ int main() {
 						continue;
 					}
 
-					// Check if first word is "smile"
 					int start_smile = 0;
 					for (int i = 0; i < 100; i++) {
 						if (text_smile[i] != ' ') {
@@ -186,9 +184,8 @@ int main() {
 						continue;
 					}
 
-					// Read colon
 					char colon;
-			        result = scanf("%c", &colon);
+			        	result = scanf("%c", &colon);
 					if (result != 1) {
 						scanf("%*[^\n]");
 						scanf("%*c");
@@ -196,7 +193,6 @@ int main() {
 						continue;
 					}
 
-					// Read first number
 					result = scanf(" %d", &smile);
 					if (result != 1 || smile <= 0) {
 						scanf("%*[^\n]");
@@ -205,7 +201,6 @@ int main() {
 						continue;
 					}
 
-					// Read comma
 					char comma;
 					result = scanf(" %c", &comma);
 					if (result != 1 || comma != ',') {
@@ -215,7 +210,6 @@ int main() {
 						continue;
 					}
 
-					// Read "cheer"
 					result = scanf(" %s", text_cheer);
 					if (result != 1) {
 						scanf("%*[^\n]");
@@ -224,7 +218,6 @@ int main() {
 						continue;
 					}
 
-					// Check if second word is "cheer"
 					int start_cheer = 0;
 					for (int i = 0; i < 100; i++) {
 						if (text_cheer[i] != ' ') {
@@ -250,7 +243,6 @@ int main() {
 						continue;
 					}
 
-					// Read colon
 					result = scanf("%c", &colon);
 					if (result != 1) {
 						scanf("%*[^\n]");
@@ -259,7 +251,6 @@ int main() {
 						continue;
 					}
 
-					// Read second number
 					result = scanf(" %d", &cheer);
 					if (result != 1 || cheer <= 0 || cheer == smile) {
 						scanf("%*[^\n]");
@@ -268,10 +259,8 @@ int main() {
 						continue;
 					}
 
-					// If we got here, everything is valid
 					input_ok = 1;
 
-					// Clear any remaining characters in the line
 					scanf("%*[^\n]");
 					scanf("%*c");
 
