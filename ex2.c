@@ -84,7 +84,7 @@ int main() {
 				break;
 			}
 			case 4: {
-				int num, num1, completes = 1, reversed = 0;
+				int num, completes = 1, reversed = 0;
 				printf("Enter a number:\n");
 				scanf("%d", &num);
 				while (num <= 0){
@@ -98,7 +98,6 @@ int main() {
 					}
 				}
 				if (completes == 1){
-					num1 = num;
 					while (num != 0) {
 						reversed = reversed * 10 + num % 10;
 						num /= 10;
